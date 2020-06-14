@@ -1,0 +1,149 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Calculadora Paypal
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-segment color="primary" [(ngModel)]="step">
+    <ion-segment-button value="1" checked>
+      <ion-label>Enviar</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="2">
+      <ion-label>Recibir</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <div [(ngSwitch)]="step" id="container">
+    <ion-grid fixed *ngSwitchCase="1">
+      <ion-row>
+        <ion-col size="12">
+          <h1>
+            Comisiones paypal
+          </h1>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">
+          <ion-item>
+            <ion-label position="floating">Porcentaje</ion-label>
+            <ion-input
+              type="number"
+              step="0.1"
+              [(ngModel)]="this.porcentaje"
+              placeholder="Porcentaje"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="4">
+          <h2>
+            % más $
+          </h2>
+        </ion-col>
+        <ion-col size="4">
+          <ion-item>
+            <ion-label position="floating">Tasa fija</ion-label>
+            <ion-input
+              [ngModel]="this.comisionFija"
+              type="number"
+              step="0.01"
+              placeholder="Comisión fija"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <h1>
+            Cálculos para enviar
+          </h1>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="stacked">Si se envían:</ion-label>
+            <ion-input
+              [(ngModel)]="this.enviar['bruto']"
+              (ngModelChange)="calcEnviar()"
+              type="number"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="stacked">Se reciben:</ion-label>
+            <ion-input value="{{this.enviar.neto}}" type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    <ion-grid fixed *ngSwitchCase="2">
+      <ion-row>
+        <ion-col size="12">
+          <h1>
+            Comisiones paypal
+          </h1>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">
+          <ion-item>
+            <ion-label position="floating">Porcentaje</ion-label>
+            <ion-input
+              type="number"
+              step="0.1"
+              [(ngModel)]="this.porcentaje"
+              placeholder="Porcentaje"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="4">
+          <h2>
+            % más $
+          </h2>
+        </ion-col>
+        <ion-col size="4">
+          <ion-item>
+            <ion-label position="floating">Tasa fija</ion-label>
+            <ion-input
+              [ngModel]="this.comisionFija"
+              type="number"
+              step="0.01"
+              placeholder="Comisión fija"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <h1>
+            Cálculos para recibir
+          </h1>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="stacked">Para recibir:</ion-label>
+            <ion-input
+              [(ngModel)]="this.recibir['neto']"
+              (ngModelChange)="calcRecibir()"
+              type="number"
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="stacked">Hay que enviar:</ion-label>
+            <ion-input value="{{this.recibir.bruto}}" type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
