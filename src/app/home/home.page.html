@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <ion-title>
+    <ion-title style="width: 100%; position: absolute; left: 0; height: 0;">
       Calculadora Paypal
     </ion-title>
   </ion-toolbar>
@@ -19,12 +19,12 @@
     <ion-grid fixed *ngSwitchCase="1">
       <ion-row>
         <ion-col size="12">
-          <h1>
+          <h2>
             Comisiones paypal
-          </h1>
+          </h2>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row class="box">
         <ion-col size="4">
           <ion-item>
             <ion-label position="floating">Porcentaje</ion-label>
@@ -55,12 +55,12 @@
       </ion-row>
       <ion-row>
         <ion-col size="12">
-          <h1>
+          <h2>
             Cálculos para enviar
-          </h1>
+          </h2>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row class="box">
         <ion-col size="6">
           <ion-item>
             <ion-label position="stacked">Si se envían:</ion-label>
@@ -79,17 +79,24 @@
           </ion-item>
         </ion-col>
       </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button (click)="mostrarComision(this.enviar.comision)" expand="block" shape="round">
+            Mostrar comisión
+          </ion-button>
+        </ion-col>
+      </ion-row>
     </ion-grid>
-    
+
     <ion-grid fixed *ngSwitchCase="2">
       <ion-row>
         <ion-col size="12">
-          <h1>
+          <h2>
             Comisiones paypal
-          </h1>
+          </h2>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row class="box">
         <ion-col size="4">
           <ion-item>
             <ion-label position="floating">Porcentaje</ion-label>
@@ -120,12 +127,12 @@
       </ion-row>
       <ion-row>
         <ion-col size="12">
-          <h1>
+          <h2>
             Cálculos para recibir
-          </h1>
+          </h2>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row class="box">
         <ion-col size="6">
           <ion-item>
             <ion-label position="stacked">Para recibir:</ion-label>
@@ -144,6 +151,18 @@
           </ion-item>
         </ion-col>
       </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button (click)="mostrarComision(this.recibir.comision)" expand="block" shape="round">
+            Mostrar comisión
+          </ion-button>
+        </ion-col>
+      </ion-row>
     </ion-grid>
   </div>
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="clean()" color="success">
+      <ion-icon name="reload-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

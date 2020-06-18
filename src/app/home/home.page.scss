@@ -25,3 +25,16 @@
 #container a {
   text-decoration: none;
 }
+
+ion-grid {
+  padding: 10px;
+  box-shadow: 1px 1px 3px var(--ion-color-primary);
+}
+
+.box {
+  box-shadow: 3px 3px 5px var(--ion-color-medium);
+}
+
+ion-title{
+  text-align: center;
+}
